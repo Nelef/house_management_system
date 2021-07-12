@@ -1,0 +1,198 @@
+<head>
+    <title>홈 화면</title>
+    <link rel="stylesheet" type="text/css" href="/css/sample.css?ver=12" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
+    <style type="text/css">
+        table {
+            width: 80%;
+            border-top: 1px solid #444444;
+            border-collapse: collapse;
+            margin: auto;
+            text-align: center;
+            background-color: #ffffff;
+        }
+
+        th, td {
+            min-width: 200px;
+            border-bottom: 1px solid #444444;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body class="all_design">
+    <a href="/">홈</a>
+    <h1>회원가입</h1>
+    <form name="frmJoin" action="/auth/register" method="post" onSubmit="return CheckForm(this)">
+        <table>
+            <tr>
+                <td>아파트 명</td>
+                <td>
+                    <input type="text" name="aptname" id="aptname" onkeyup="f_aptcheck()" required><br>
+                    <a id="aptcheckText" value="" width=100></a>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>성 명</td>
+                <td><input type="text" name="realname" required/></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>사원번호</td>
+                <td>000</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>직 책</td>
+                <td><select name="position">
+                        <option value="teacher">팀장</option>
+                        <option value="developer">직원</option>
+                    </select>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>생년월일</td>
+                <td colspan="2"><select name="user_birth_year">
+                        <script>
+                            for (i = 1950; i <= 2010; i++) {
+                                document.write("<option>" + i + "</option>");
+                            }
+                        </script>
+                    </select>년
+                    <select name="user_birth_month">
+                        <script>
+                            for (i = 1; i <= 12; i++) {
+                                document.write("<option>" + i + "</option>");
+                            }
+                        </script>
+                    </select>월
+                    <select name="user_birth_day">
+                        <script>
+                            for (i = 1; i <= 31; i++) {
+                                document.write("<option>" + i + "</option>");
+                            }
+                        </script>
+                    </select>일
+                </td>
+            </tr>
+            <tr>
+                <td>주소</td>
+                <td>우편번호 <input type="text" name="zip" style="width:80px; height:26px;" required/><br>
+                    주소 : <input type="text" name="address1" style="width:auto; height:30px;" readonly required/><br>
+                    상세 : <input type="text" name="address2" style="width:auto; height:30px;" />
+                </td>
+                <td><button type="button" style="width:60px; height:32px;" onclick="openZipSearch()">찾기</button><br></td>
+            </tr>
+            <tr>
+                <td>휴대 전화</td>
+                <td><input type="text" name="phone" required/></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>* 귀하가 시스템에 접속할 때마다 로그온 자격 확인 위해 이 전화로 위치 추적을 합니다. 스마트폰 위치 추적에 동의해 주세요. </td>
+                <td><input type="checkbox" name="user_gps_check" id="user_gps_check" value=""/><br><a id="gpscheckbox" width=100></a></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>아이디</td>
+                <td>
+                    <input type="text" name="userid" id="userid" required><br>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>비밀번호</td>
+                <td>
+                    <input type="password" name="password" id="password" onkeyup="f_passwordcheck()" required><br>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>비밀번호 확인</td>
+                <td>
+                    <input type="password" id="passwordcheck" onkeyup="f_passwordcheck()" required><br>
+                </td>
+                <td id="passwordcheckText" width=100>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <input type="submit" value="등록 확인" />
+                </td>
+            </tr>
+        </table>
+    </form>
+    <script>
+        function CheckForm(Join) {
+            //체크박스 체크여부 확인 [하나]
+            var chk = document.frmJoin.user_gps_check.checked;
+
+            // alert(f_aptcheck()+"  "+f_passwordcheck());
+
+            if (!chk) {
+                alert('약관에 동의해 주세요.');
+                document.getElementById("gpscheckbox").innerHTML = "<b><font color=red>약관에 동의해 주세요.</font></b>"
+                return false;
+            }
+            if (!f_aptcheck()) {
+                alert('인증된 아파트 명을 써주세요.');
+                document.getElementById("aptcheckText").innerHTML = "<b><font color=red>아파트 명이 일치하지 않습니다.<br>인증된 아파트 명을 써주세요.</font></b>"
+                return false;
+            }
+            if (!f_passwordcheck()) {
+                alert('비밀번호와 비밀번호 확인이 일치하지 않습니다. 다시 입력해주세요.');
+                document.getElementById("passwordcheckText").innerHTML = "<b><font color=red>비밀번호와 비밀번호 확인이 일치하지 않습니다. 다시 입력해주세요.</font></b>"
+                return false;
+            }
+        }
+        function openZipSearch() {
+            new daum.Postcode({
+                oncomplete: function (data) {
+                    $('[name=zip]').val(data.zonecode); // 우편번호 (5자리)
+                    $('[name=address1]').val(data.address);
+                    $('[name=address2]').val(data.buildingName);
+                }
+            }).open();
+        }
+        function f_aptcheck() {
+            var aptname = document.getElementById("aptname").value;
+
+            if (aptname == "") {
+                document.getElementById("aptcheckText").innerHTML = ""
+            }
+            else if (aptname != "임시") {
+                document.getElementById("aptcheckText").innerHTML = "<b><font color=red>아파트 명이 일치하지 않습니다.</font></b>"
+                return false;
+            }
+            else {
+                document.getElementById("aptcheckText").innerHTML = "<b><font color=blue>아파트 명이 일치합니다.</font></b>"
+                return ture;
+            }
+        }
+        function f_passwordcheck() {
+            var password = document.getElementById("password").value;
+            var passwordcheck = document.getElementById("passwordcheck").value;
+
+            if (passwordcheck == "") {
+                document.getElementById("passwordcheckText").innerHTML = ""
+            }
+            else if (password != passwordcheck) {
+                document.getElementById("passwordcheckText").innerHTML = "<b><font color=red>비밀번호가 일치하지 않습니다.</font></b>"
+                return false;
+            }
+            else {
+                document.getElementById("passwordcheckText").innerHTML = "<b><font color=blue>비밀번호가 일치합니다.</font></b>"
+                return ture;
+            }
+        }
+        function f_allcheck() {
+            var apt_test = document.getElementById('apt_name_test_b').value;
+            alert('apt_test = ' + apt_test);
+        }
+    </script>
+</body>

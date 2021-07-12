@@ -1,0 +1,374 @@
+<head>
+	<title>단지/건물</title>
+	<link rel="stylesheet" type="text/css" href="/css/sample.css?ver=1"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<style>
+	.tg {
+		border-collapse: collapse;
+		border-spacing: 0;
+	}
+
+	.tg td {
+		border-color: black;
+		border-style: solid;
+		border-width: 1px;
+		font-family: Arial, sans-serif;
+		font-size: 14px;
+		overflow: hidden;
+		padding: 10px 5px;
+		word-break: normal;
+	}
+
+	.tg th {
+		border-color: black;
+		border-style: solid;
+		border-width: 1px;
+		font-family: Arial, sans-serif;
+		font-size: 14px;
+		font-weight: normal;
+		overflow: hidden;
+		padding: 10px 5px;
+		word-break: normal;
+	}
+
+	.tg .tg-v9it {
+		background-color: #e3eefc;
+		border-color: #9b9b9b;
+		text-align: center;
+		vertical-align: middle
+	}
+
+	.tg .tg-6k0d {
+		border-color: #9b9b9b;
+		text-align: center;
+		vertical-align: middle
+	}
+
+	.tg .tg-m6jf {
+		border-color: #9b9b9b;
+		text-align: left;
+		vertical-align: middle
+	}
+
+	.tg .tg-o1sx {
+		background-color: #f4f9ff;
+		border-color: #9b9b9b;
+		text-align: center;
+		vertical-align: middle
+	}
+
+	.tg .tg-l78v {
+		background-color: #f4f9ff;
+		border-color: #9b9b9b;
+		text-align: left;
+		vertical-align: middle
+	}
+
+	/* footer */
+	.footer {
+		background: #303036;
+		color: #d3d3d3;
+		height: 400px;
+	}
+</style>
+
+<body class="all_design">
+	<nav id="topMenu">
+		<ul>
+			<li class="menulink"><a href="/">홈</a></li>
+			<li class="menulink"><a href="">검침관리</a></li>
+			<li class="menulink"><a href="">부과관리</a></li>
+			<li class="menulink"><a href="">수납관리</a></li>
+			<li class="menulink"><a href="">지출관리</a></li>
+			<li class="menulink"><a href="">인사/계약</a></li>
+			<li class="menulink"><a href="">유지보수공사</a></li>
+			<li class="menulink"><a href="">회계/예산관리</a></li>
+			<li class="menulink"><a href="" class="active">단지/민원관리</a></li>
+			<li class="menulink"><a href="">조직/단체관리</a></li>
+		</ul>
+	</nav>
+
+	<div class="content">
+		<nav id="subMenu">
+			<ul>
+				<li class="menulink"><a href="" class="active">단지정보등록</a></li>
+				<li class="menulink"><a href="">전출입관리</a></li>
+				<li class="menulink"><a href="">민원관리</a></li>
+			</ul>
+		</nav>
+		<div>
+			<nav id="Menu">
+				<ul>
+					<li class="menulink"><a href="AA1" class="active">단지/건물</a></li>
+					<li class="menulink"><a href="AA2">부대/복리/관리시설</a></li>
+					<li class="menulink"><a href="">사업자등록</a></li>
+					<li class="menulink"><a href="">장기수선시설</a></li>
+					<li class="menulink"><a href="">등호등록</a></li>
+				</ul>
+			</nav>
+
+			<form action="AA1" method="post">
+				<div class="tg-wrap">
+					<table class="tg" style="table-layout: fixed; width: 731px">
+						<colgroup>
+							<col style="width: 101px">
+							<col style="width: 21px">
+							<col style="width: 43px">
+							<col style="width: 45px">
+							<col style="width: 61px">
+							<col style="width: 116px">
+							<col style="width: 61px">
+							<col style="width: 111px">
+							<col style="width: 61px">
+							<col style="width: 111px">
+						</colgroup>
+						<tbody>
+							<tr>
+								<td class="tg-6k0d"
+									style="border-top: none; border-left: none; border-right: none; font-size: 2em;">단지
+								</td>
+								<td class="tg-m6jf" style="border-top: none; border-left: none; border-right: none;"
+									colspan="9"></td>
+							</tr>
+							<tr>
+								<td class="tg-o1sx">명칭</td>
+								<td class="tg-m6jf" colspan="5">
+									<input type="text" name=apt_name required>아파트
+								</td>
+								<td class="tg-o1sx" colspan="2">대지면적</td>
+								<td class="tg-6k0d" colspan="2">
+									<input style="width:100;" type="text" name=site_area required>㎡
+								</td>
+							</tr>
+							<tr>
+								<td class="tg-o1sx">위치</td>
+								<td class="tg-m6jf" colspan="9">
+									<input style="width:500;" type="text" id=locat name=locat required>
+									<input type="button" onclick="openZipSearch()" value="주소 검색">
+								</td>
+							</tr>
+							<tr>
+								<td class="tg-o1sx">사용검사일</td>
+								<td class="tg-m6jf" colspan="5"><input style="width:60;" min='1950' max='9999'
+										type="number" name=use_check_year required>년<input style="width:60;" min='1'
+										max='12' type="number" name=use_check_month required>월<input style="width:60;"
+										min='1' max='31' type="number" name=use_check_day required>일</td>
+								<td class="tg-o1sx" colspan="2">사업승인일</td>
+								<td class="tg-6k0d" colspan="2"><input style="width:60;" min='1950' max='9999'
+										type="number" name=b_approval_year required>년<input style="width:60;" min='1'
+										max='12' type="number" name=b_approval_month required>월<input style="width:60;"
+										min='1' max='31' type="number" name=b_approval_day required>일</td>
+							</tr>
+							<tr>
+								<td class="tg-o1sx">건폐율</td>
+								<td class="tg-m6jf" colspan="3"><input style="width:70;" type="number"
+										name=build_coverage required>%</td>
+								<td class="tg-o1sx">용적율</td>
+								<td class="tg-6k0d"><input style="width:70;" type="number" name=build_volum required>%
+								</td>
+								<td class="tg-o1sx" colspan="2">사업주체</td>
+								<td class="tg-6k0d" colspan="2"><input style="width:100;" type="text" name=b_entity
+										required>
+								</td>
+							</tr>
+							<tr>
+								<td class="tg-6k0d" style="border-left: none; border-right: none; font-size: 2em;">건물
+								</td>
+								<td class="tg-m6jf" style="border-left: none; border-right: none; border-bottom: none;"
+									colspan="9"></td>
+							</tr>
+							<tr>
+								<td class="tg-o1sx">건물구조</td>
+								<td class="tg-m6jf" style="border:none;" rowspan="4"></td>
+								<td class="tg-v9it">주택</td>
+								<td class="tg-l78v">유형</td>
+								<td class="tg-6k0d" colspan="4">복도식 <input style="width:60;" type="number"
+										name=apt_corridor required>동 / 계단식 <input style="width:60;" type="number"
+										name=apt_terraced required>동
+								</td>
+								<td class="tg-o1sx">세대수</td>
+								<td class="tg-6k0d"><input style="width:80;" type="number" name=apt_house_num required>
+								</td>
+							</tr>
+							<tr>
+								<td class="tg-6k0d"><select name="position">
+									<option value="rahmen">라멘</option>
+									<option value="wall">벽식</option>
+									<option value="muryang">무량판</option>
+								</select><br>구조</td>
+								<td class="tg-o1sx" colspan="2">출입구수</td>
+								<td class="tg-m6jf" colspan="2"><input style="width:80;" type="number" name=apt_enter
+										required>
+								</td>
+								<td class="tg-o1sx">건축면적</td>
+								<td class="tg-6k0d"><input style="width:60;" type="number" name=build_area required>㎡
+								</td>
+								<td class="tg-o1sx">연면적</td>
+								<td class="tg-6k0d"><input style="width:60;" type="number" name=build_tarea required>㎡
+								</td>
+							</tr>
+							<tr>
+								<td class="tg-o1sx">난방방식</td>
+								<td class="tg-o1sx" colspan="2" rowspan="2">동별층수</td>
+								<td class="tg-6k0d" colspan="6"><input style="width:60;" type="number" name=floor_dong
+										required>동 (동수: <input style="width:60;" type="number" name=apt_dong_num
+										required>)
+								</td>
+							</tr>
+							<tr>
+								<td class="tg-6k0d""><select name="position">
+									<option value="center">중앙</option>
+									<option value="one">개별</option>
+									<option value="area">지역</option>
+								</select><br>난방</td>
+								<td class="tg-6k0d" colspan="2">지상:<input style="width:60;" type="number" name=floor_g>
+								</td>
+								<td class="tg-6k0d" colspan="2">지하:<input style="width:60;" type="number" name=floor_ug>
+								</td>
+								<td class="tg-6k0d" colspan="2">세대수:<input style="width:60;" type="number"
+										name=floor_house_num>
+							</tr>
+							<tr>
+								<td colspan="2" rowspan="3" style="border:none"></td>
+								<td class="tg-o1sx" colspan="2" rowspan="3">분양면적</td>
+								<td class="tg-m6jf"></td>
+								<td class="tg-6k0d"></td>
+								<td class="tg-m6jf"></td>
+								<td class="tg-m6jf"></td>
+								<td class="tg-m6jf"></td>
+								<td class="tg-m6jf"></td>
+							</tr>
+							<tr>
+								<td class="tg-m6jf"></td>
+								<td class="tg-m6jf"></td>
+								<td class="tg-m6jf"></td>
+								<td class="tg-6k0d"></td>
+								<td class="tg-m6jf"></td>
+								<td class="tg-m6jf"></td>
+							</tr>
+							<tr>
+								<td class="tg-m6jf"></td>
+								<td class="tg-m6jf"></td>
+								<td class="tg-m6jf"></td>
+								<td class="tg-6k0d"></td>
+								<td class="tg-m6jf"></td>
+								<td class="tg-m6jf"></td>
+							</tr>
+						</tbody>
+					</table>
+					<br><input type="submit" value="저장" />
+				</div>
+			</form>
+		</div>
+	</div>
+	<div style="background-color: white">	
+		<table width="100%" border="1">
+		<tr>
+			<th>DELETE</th>
+			<th>EDIT</th>
+			<th>등록번호</th>
+			<th>등록일</th>
+			<th>단지명칭</th>
+			<th>대지면적</th>
+			<th>위치</th>
+			<th>사용검사일</th>
+			<th>사업승인일</th>
+			<th>건폐율</th>
+			<th>용적율</th>
+			<th>사업주체</th>
+			<th>복도식</th>
+			<th>계단식</th>
+			<th>세대수</th>
+			<th>출입구수</th>
+			<th>건축면적</th>
+			<th>연면적</th>
+			<th>동</th>
+			<th>동수</th>
+			<th>지상</th>
+			<th>지하</th>
+			<th>세대수</th>
+		</tr>
+		<% prodList.forEach(function(item, index){ %>
+			<tr>
+				<td><a href='/delete/<%= item.reg_num %>'>DELETE</a></td>
+				<td><a href='/edit/<%= item.reg_num %>'>EDIT</a></td>
+				<td>
+					<%= item.reg_num %>
+				</td>
+				<td>
+					<%= item.red_date %>
+				</td>
+				<td>
+					<%= item.apt_name %>
+				</td>
+				<td>
+					<%= item.site_area %>
+				</td>
+				<td>
+					<%= item.locat %>
+				</td>
+				<td>
+					<%= item.use_check %>
+				</td>
+				<td>
+					<%= item.b_approval %>
+				</td>
+				<td>
+					<%= item.build_coverage %>
+				</td>
+				<td>
+					<%= item.build_volum %>
+				</td>
+				<td>
+					<%= item.b_entity %>
+				</td>
+				<td>
+					<%= item.apt_corridor %>
+				</td>
+				<td>
+					<%= item.apt_terraced %>
+				</td>
+				<td>
+					<%= item.apt_house_num %>
+				</td>
+				<td>
+					<%= item.apt_enter %>
+				</td>
+				<td>
+					<%= item.build_area %>
+				</td>
+				<td>
+					<%= item.build_tarea %>
+				</td>
+				<td>
+					<%= item.floor_dong %>
+				</td>
+				<td>
+					<%= item.apt_dong_num %>
+				</td>
+				<td>
+					<%= item.floor_g %>
+				</td>
+				<td>
+					<%= item.floor_ug %>
+				</td>
+				<td>
+					<%= item.floor_house_num %>
+				</td>
+			</tr>
+			<% }); %>
+	</table></div>
+
+	<script>
+		function openZipSearch() {
+			new daum.Postcode({
+				oncomplete: function (data) {
+					var addr = data.address; // 최종 주소 변수
+					// 주소 정보를 해당 필드에 넣는다.
+					document.getElementById("locat").value = addr;
+				}
+			}).open();
+		}
+	</script>
+</body>

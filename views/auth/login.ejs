@@ -1,0 +1,22 @@
+<head>
+    <title>홈 화면</title>
+    <link rel="stylesheet" type="text/css" href="/css/sample.css?ver=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body class="all_design">
+    <a href="/">홈</a>
+    <h1>로그인 페이지</h1>
+    <form action="/auth/login" method="post">
+        <p>
+            <input type="text" name="username" placeholder="id" required>
+        </p>
+        <p>
+            <input type="password" name="password" placeholder="password" required>
+        </p>
+        <p>
+            <input type='submit' value='로그인'>
+        </p>
+    </form>
+    <a href="/auth/facebook">페이스북으로 로그인</a>
+</body>

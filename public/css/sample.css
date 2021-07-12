@@ -1,0 +1,162 @@
+header {
+    color: black;
+    text-align: center;
+    padding: 10px;
+    margin: 20px;
+}
+
+body {
+    min-width: max-content;
+    margin: 0;
+    padding: 0;
+}
+
+footer{
+    color: white;
+    text-shadow:3px 3px 3px rgb(0,0,0);
+}
+
+.all_design{
+    flex-wrap: nowrap;
+    margin:2rem auto;
+    min-width:1200px;
+    max-width: 95%;
+    text-align: center;
+    background-image: url("/img/bg_image.jpg");
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+#topMenu {
+    flex-wrap: nowrap;
+}
+
+#topMenu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+}
+
+#topMenu ul:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+#topMenu .active {
+    background-color: #4CAF50;
+}
+
+#topMenu .menulink {
+    float: left;
+}
+
+#topMenu .menulink a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+#topMenu .menulink a:hover:not(.active) {
+    background-color: #111;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+}
+
+#subMenu {
+    display: flex;
+}
+
+#subMenu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #f1f1f1;
+}
+
+#subMenu .active {
+    background-color: #54c258;
+    color: white;
+}
+
+#subMenu .menulink a {
+    display: flex;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+#subMenu .menulink a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+
+#Menu {
+    flex-wrap: nowrap;
+}
+
+#Menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+}
+
+#Menu .menulink {
+    float: left;
+}
+
+#Menu .active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#Menu .menulink a {
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+#Menu .menulink a:hover:not(.active) {
+    background-color: #111;
+    color: white;
+}
+
+@media ( max-width: 768px ) {
+    .all_design{
+        margin:0;
+        min-width: auto;
+        max-width: 1200px;
+    }
+
+    .content {
+        margin:auto;
+        display: block;
+        background-color: white;
+    }
+
+    #subMenu ul:after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+
+    #subMenu .menulink {
+        float: left;
+    }
+
+    #subMenu ul {
+        width: auto;
+    }
+}
+
+
